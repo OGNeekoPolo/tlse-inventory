@@ -1,3 +1,14 @@
+# Ashtray $120
+# Lighter $150
+# Pins $10
+# Apple $250
+# Brick $65
+# Decks $125
+# Wheels $65
+
+
+
+
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
@@ -69,6 +80,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :item_type, :brand, :size, :price, :condition)
+      params.require(:product).permit(:name, :item_type, :brand, :size, :price, :condition, :owner_id, :info)
     end
 end

@@ -1,47 +1,62 @@
-<%= form_with(model: product, local: true) do |form| %>
-  <% if product.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+<div class="container">
+  <%= form_with(model: product, local: true) do |form| %>
+    <% if product.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
 
-      <ul>
-      <% product.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+        <ul>
+        <% product.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="form-group">
+      <%= form.label :name %>
+      <%= form.text_field :name, id: :product_name, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :item_type %>
+      <%= form.text_field :item_type, id: :product_item_type, class: "form-control", placeholder: "Shirt, Shoes, Jacket, etc." %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :brand %>
+      <%= form.text_field :brand, id: :product_brand, class: "form-control", placeholder: "Jordan, Nike, Supreme, etc." %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :size %>
+      <%= form.text_field :size, id: :product_size, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :price %>
+      <%= form.text_field :price, id: :product_price, class: "form-control", placeholder: "High Price - Low Price" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :condition %>
+      <%= form.select :condition, options_for_select([["Select One", ""], "DS", "Pre-Owned"]),id: :product_condition, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :owner_id %>
+      <%= form.collection_select(:owner_id, Owner.all, :id, :name, prompt: true)  %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :info %>
+      <%= form.text_area :info, id: :product_info, class: "form-control", placeholder: "Additional Info goes here..." %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit %>
+      <br>
+      <br>
+      <%= link_to 'Cancel', products_path, class: "btn btn-danger" %>
+
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :product_name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :item_type %>
-    <%= form.text_field :item_type, id: :product_item_type %>
-  </div>
-
-  <div class="field">
-    <%= form.label :brand %>
-    <%= form.text_field :brand, id: :product_brand %>
-  </div>
-
-  <div class="field">
-    <%= form.label :size %>
-    <%= form.text_field :size, id: :product_size %>
-  </div>
-
-  <div class="field">
-    <%= form.label :price %>
-    <%= form.text_field :price, id: :product_price %>
-  </div>
-
-  <div class="field">
-    <%= form.label :condition %>
-    <%= form.text_field :condition, id: :product_condition %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

@@ -1,0 +1,28 @@
+%header
+  %h1.jumbotron TLSE Inventory
+  %nav.navbar.navbar-expand-lg.navbar-light.bg-light
+    %div.navbar-brand
+      = image_tag('logos/tlse-logo.png', width: "60", height: "30")
+    %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
+      %span.navbar-toggler-icon
+    #navbarSupportedContent.collapse.navbar-collapse
+      %ul.navbar-nav.mr-auto
+        %li.nav-item.active
+          %a.nav-link{:href => "/products"}
+            Home
+            %span.sr-only (current)
+        %li.nav-item.dropdown
+          %a#navbarDropdownMenuLink.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "http://example.com"}
+            Inventory
+          .dropdown-menu{"aria-labelledby" => "navbarDropdownMenuLink"}
+            %a.dropdown-item{:href => "/products"} See All Products
+            %a.dropdown-item{:href => "/products/new"} Add Product
+        %li.nav-item.dropdown
+          %a#navbarDropdownMenuLink.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "http://example.com"}
+            Owners
+          .dropdown-menu{"aria-labelledby" => "navbarDropdownMenuLink"}
+            %a.dropdown-item{:href => "/owners"} See Product Owners
+            %a.dropdown-item{:href => "/owners/new"} Add Owners
+      %form.form-inline.my-2.my-lg-0
+        %input.form-control.mr-sm-2{"aria-label" => "Search", :placeholder => "Search", :type => "text"}/
+        %button.btn.btn-outline-success.my-2.my-sm-0{:type => "submit"} Search
