@@ -1,5 +1,7 @@
 %header
-  %h1.jumbotron TLSE Inventory
+  .jumbotron.text-center
+    = image_tag('logos/qstox-logo.png')
+    %h1 QStox
   %nav.navbar.navbar-expand-lg.navbar-light.bg-light
     %div.navbar-brand
       = image_tag('logos/tlse-logo.png', width: "60", height: "30")
@@ -23,6 +25,9 @@
           .dropdown-menu{"aria-labelledby" => "navbarDropdownMenuLink"}
             %a.dropdown-item{:href => "/owners"} See Product Owners
             %a.dropdown-item{:href => "/owners/new"} Add Owners
+        %li.nav-item
+          %a.nav-link{:href => "/logout", method: :delete, data: {confirm: 'Are You sure you want to log out?'} }
+            Logout
       %form.form-inline.my-2.my-lg-0
         %input.form-control.mr-sm-2{"aria-label" => "Search", :placeholder => "Search", :type => "text"}/
         %button.btn.btn-outline-success.my-2.my-sm-0{:type => "submit"} Search

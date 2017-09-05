@@ -14,6 +14,7 @@
  *= require_self
  */
 @import "bootstrap";
+@import "evil-icons";
 
 th, tr {
   text-align: center;
@@ -21,4 +22,9 @@ th, tr {
 
 .jumbotron {
   margin-bottom: 0;
+  background-color: black;
+
+  h1 {
+    color: white;
+  }
 }
