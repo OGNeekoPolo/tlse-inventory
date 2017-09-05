@@ -3,7 +3,11 @@ class OwnersController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @owners = Owner.all.page params[:page]
+    if params[:search]
+      @owners = Owner.search(params[:search]).order("created_at DESC").page params[:page]
+    else
+      @owners = Owner.all.page params[:page]
+    end
   end
 
   def show

@@ -30,5 +30,5 @@
           %a.nav-link{:href => "/logout", method: :delete, data: {confirm: 'Are You sure you want to log out?'} }
             Logout
       %form.form-inline.my-2.my-lg-0
-        %input.form-control.mr-sm-2{"aria-label" => "Search", :placeholder => "Search", :type => "text"}/
+        = text_field_tag :search, params[:search], class: "form-control mr-sm-2"
         %button.btn.btn-outline-success.my-2.my-sm-0{:type => "submit"} Search
