@@ -3,7 +3,7 @@ class OwnersController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @owners = Owner.all
+    @owners = Owner.all.page params[:page]
   end
 
   def show
