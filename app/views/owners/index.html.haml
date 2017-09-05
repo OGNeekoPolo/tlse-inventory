@@ -1,19 +1,20 @@
 %p#notice= notice
-%table.table.table-striped.table-bordered
-  %thead
-    %tr
-      %th ID
-      %th Name
-      %th Email
-      %th Phone Number
-      %th#actions{:colspan => "3"} Actions
-  %tbody
-    - @owners.each do |owner|
+.container
+  %table.table.table-striped.table-bordered
+    %thead
       %tr
-        %th{:scope => "row"}= owner.id
-        %td= owner.name
-        %td= owner.email
-        %td= owner.phone
-        %td= link_to 'Show', owner
-        %td= link_to 'Edit', edit_owner_path(owner)
-        %td= link_to 'Destroy', owner, method: :delete, data: { confirm: 'Are you sure?' }
+        %th ID
+        %th Name
+        %th Email
+        %th Phone Number
+        %th#actions{:colspan => "3"} Actions
+    %tbody
+      - @owners.each do |owner|
+        %tr
+          %th{:scope => "row"}= owner.id
+          %td= owner.name
+          %td= owner.email
+          %td= owner.phone
+          %td= link_to 'Show', owner
+          %td= link_to 'Edit', edit_owner_path(owner)
+          %td= link_to 'Destroy', owner, method: :delete, data: { confirm: 'Are you sure?' }
