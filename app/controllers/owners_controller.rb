@@ -11,7 +11,7 @@ class OwnersController < ApplicationController
   end
 
   def show
-
+    @products = @owner.products
   end
 
   def new

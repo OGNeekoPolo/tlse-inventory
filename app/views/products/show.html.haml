@@ -1,0 +1,39 @@
+%p#notice= notice
+
+.container
+  .card
+    .card-header
+      = @product.name
+    .card-body
+      .container
+        .row
+          %h4 Product Owner: 
+          %h4= link_to "#{@product.owner.name}", owner_path(@product.owner)
+        %em= "Added: #{time_ago_in_words(@product.created_at)} ago"
+        %br/
+        %br/
+        %form
+          .form-group.row
+            %label.col-sm-2.col-form-label{:for => "item_type"} Item Type:
+            .col-sm-10
+              %input#item_type.form-control-plaintext{:readonly => "readonly", :type => "text", :value => "#{@product.item_type}"}/
+          .form-group.row
+            %label.col-sm-2.col-form-label{:for => "brand"} Brand:
+            .col-sm-10
+              %input#brand.form-control-plaintext{:readonly => "readonly", :type => "text", :value => "#{@product.brand}"}/
+          .form-group.row
+            %label.col-sm-2.col-form-label{:for => "brand"} Size:
+            .col-sm-10
+              %input#brand.form-control-plaintext{:readonly => "readonly", :type => "text", :value => "#{@product.size}"}/
+          .form-group.row
+            %label.col-sm-2.col-form-label{:for => "brand"} Price Range:
+            .col-sm-10
+              %input#brand.form-control-plaintext{:readonly => "readonly", :type => "text", :value => "#{@product.price}"}/
+          .form-group.row
+            %label.col-sm-2.col-form-label{:for => "brand"} Condition:
+            .col-sm-10
+              %input#brand.form-control-plaintext{:readonly => "readonly", :type => "text", :value => "#{@product.condition}"}/
+          .form-group.row
+            %label.col-sm-2.col-form-label{:for => "brand"} Additional Info:
+            .col-sm-10
+              %input#brand.form-control-plaintext{:readonly => "readonly", :type => "text", :value => "#{@product.info}"}/

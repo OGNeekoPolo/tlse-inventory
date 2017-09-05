@@ -1,0 +1,46 @@
+%p#notice= notice
+
+.container
+  .card
+    .card-header
+      Owner Profile
+    .card-body
+      %form
+        .form-group.row
+          %label.col-sm-2.col-form-label{:for => "item_type"} Name:
+          .col-sm-10
+            %input#item_type.form-control-plaintext{:readonly => "readonly", :type => "text", :value => "#{@owner.name}"}/
+        .form-group.row
+          %label.col-sm-2.col-form-label{:for => "brand"} Email:
+          .col-sm-10
+            = mail_to "#{@owner.email}"
+        .form-group.row
+          %label.col-sm-2.col-form-label{:for => "brand"} Phone:
+          .col-sm-10
+            %input#brand.form-control-plaintext{:readonly => "readonly", :type => "text", :value => "#{@owner.phone}"}/
+      %br/
+
+      %h4 Cosigned Products
+      #accordion{:role => "tablist"}
+        - @products.each do |product|
+          .card
+            .card-header{:role => "tab", :id => "heading#{product.id}"}
+              %h5.mb-0
+                %a{"aria-controls" => "product_#{product.id}", "aria-expanded" => "false", "data-toggle" => "collapse", :href => "#product_#{product.id}"}= product.name
+            .collapse{"aria-labelledby" => "heading#{product.id}", "data-parent" => "#accordion", :role => "tabpanel", :id => "product_#{product.id}" }
+              .card-body
+                %table.table.table-sm
+                  %thead
+                    %tr
+                      %th ID
+                      %th Brand
+                      %th Price
+                      %th Condition
+                      %th Product Link
+                  %tbody
+                    %tr
+                      %th{:scope => "row"}= product.id
+                      %td= product.brand
+                      %td= product.price
+                      %td= product.condition
+                      %td= link_to 'Show', product_path(product)
